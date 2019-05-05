@@ -15,10 +15,7 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
-
-- script: dotnet ef database update
-  displayName: 'dotnet dotnet ef database update'
-  
+ 
 - script: docker build -t vehiclesapi .
   displayName: 'docker build'         
   
