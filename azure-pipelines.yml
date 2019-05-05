@@ -15,15 +15,18 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+
+- script: dotnet ef database update
+  displayName: 'dotnet dotnet ef database update'
   
 - script: docker build -t vehiclesapi .
   displayName: 'docker build'         
   
-- script: docker tag vehiclesapi altenchallengecontainers.azurecr.io/vehiclesapi:v1
+- script: docker tag vehiclesapi altenchallengecontainers.azurecr.io/vehiclesapi:$(Build.BuildNumber)
   displayName: 'docker tag'  
   
 - script: docker login https://altenchallengecontainers.azurecr.io -u AltenChallengeContainers -p SIgnOHm5+EWnoupFU5TC77GZOfiUBHkS
   displayName: 'docker login'
   
-- script: docker push altenchallengecontainers.azurecr.io/vehiclesapi:v1
+- script: docker push altenchallengecontainers.azurecr.io/vehiclesapi:$(Build.BuildNumber)
   displayName: 'docker push'
