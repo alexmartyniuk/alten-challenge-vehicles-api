@@ -8,7 +8,7 @@ using VehiclesAPI.Models;
 
 namespace VehiclesAPI.Migrations
 {
-    [DbContext(typeof(ApplicationContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20190505185307_AddTestData")]
     partial class AddTestData
     {

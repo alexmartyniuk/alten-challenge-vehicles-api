@@ -10,9 +10,9 @@ namespace VehiclesAPI.Services
     public class VehicleService
     {
         private const int SecondsConnected = -60;
-        private readonly ApplicationContext _dbContext;
+        private readonly ApplicationDbContext _dbContext;
 
-        public VehicleService(ApplicationContext dbContext)
+        public VehicleService(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
         }

@@ -7,9 +7,9 @@ namespace VehiclesAPI.Services
 {
     public class CustomerService
     {
-        private readonly ApplicationContext _dbContext;
+        private readonly ApplicationDbContext _dbContext;
 
-        public CustomerService(ApplicationContext dbContext)
+        public CustomerService(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
         }
