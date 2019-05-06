@@ -21,6 +21,7 @@ namespace VehiclesAPI.Services
         {
             return await _dbContext.Vehicles.FindAsync(id);
         }
+
         public async Task<List<VehicleModel>> SearchAsync(bool? connected, int? customerId)
         {
             IQueryable<VehicleModel> query = _dbContext.Vehicles;
