@@ -7,10 +7,10 @@ COPY VehiclesAPI.csproj VehiclesAPI/
 RUN dotnet restore VehiclesAPI/VehiclesAPI.csproj
 WORKDIR /src/VehiclesAPI
 COPY . .
-RUN dotnet build VehiclesAPI.csproj -c Release -o /app
+RUN dotnet build VehiclesAPI.csproj -c Debug -o /app
 
 FROM build AS publish
-RUN dotnet publish VehiclesAPI.csproj -c Release -o /app
+RUN dotnet publish VehiclesAPI.csproj -c Debug -o /app
 
 FROM base AS final
 COPY --from=publish /app .
