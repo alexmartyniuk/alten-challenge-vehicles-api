@@ -42,6 +42,8 @@ namespace VehiclesAPI.Services
                 query = query.Where(vh => vh.CustomerId == customerId.Value);                
             }
 
+            query = query.Include("Customer");
+
             return await query.ToListAsync();
         }
 
