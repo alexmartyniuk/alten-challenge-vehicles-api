@@ -29,6 +29,7 @@ namespace VehiclesAPI
             services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            services.AddScoped<DateTimeService>();
             services.AddScoped<ApplicationDbContext>();
             services.AddScoped<CustomerService>();
             services.AddScoped<VehicleService>();

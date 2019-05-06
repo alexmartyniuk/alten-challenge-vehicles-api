@@ -11,10 +11,12 @@ namespace VehiclesAPI.Services
     {
         private const int SecondsConnected = -60;
         private readonly ApplicationDbContext _dbContext;
+        private readonly DateTimeService _dateTimeService;
 
-        public VehicleService(ApplicationDbContext dbContext)
+        public VehicleService(ApplicationDbContext dbContext, DateTimeService dateTimeService)
         {
             _dbContext = dbContext;
+            _dateTimeService = dateTimeService;
         }
 
         public async Task<VehicleModel> GetAsync(int id)
@@ -30,11 +32,11 @@ namespace VehiclesAPI.Services
             {
                 if (connected.Value)
                 {
-                    query = query.Where(vh => vh.ConnectUpdated >= DateTime.UtcNow.AddSeconds(SecondsConnected));
+                    query = query.Where(vh => vh.ConnectUpdated >= _dateTimeService.Now.AddSeconds(SecondsConnected));
                 }
                 else
                 {
-                    query = query.Where(vh => vh.ConnectUpdated < DateTime.UtcNow.AddSeconds(SecondsConnected));
+                    query = query.Where(vh => vh.ConnectUpdated < _dateTimeService.Now.AddSeconds(SecondsConnected));
                 }
             }
 
@@ -43,7 +45,7 @@ namespace VehiclesAPI.Services
                 query = query.Where(vh => vh.CustomerId == customerId.Value);                
             }
 
-            query = query.Include("Customer");
+            query = query.Include(vh => vh.Customer);
 
             return await query.ToListAsync();
         }
@@ -52,14 +54,14 @@ namespace VehiclesAPI.Services
         {
             var originalVehicle = await GetAsync(vehicle.Id);
 
-            originalVehicle.ConnectUpdated = DateTime.UtcNow;
+            originalVehicle.ConnectUpdated = _dateTimeService.Now;
 
             await _dbContext.SaveChangesAsync();
         }
 
         public bool IsConnected(VehicleModel vehicle)
         {
-            return vehicle.ConnectUpdated >= DateTime.UtcNow.AddSeconds(SecondsConnected);
+            return vehicle.ConnectUpdated >= _dateTimeService.Now.AddSeconds(SecondsConnected);
         }
     }
 }
