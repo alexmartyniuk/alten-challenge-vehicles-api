@@ -8,8 +8,11 @@ namespace VehiclesAPI.Models
     public class CustomerModel
     {
         public int Id { get; set; }
+
         public string FullName { get; set; }
+
         public string Address { get; set; }
-        public ICollection<VehicleModel> Vehicles { get; set; }
+
+        public ICollection<VehicleModel> Vehicles { get; }
     }
 }

@@ -21,7 +21,7 @@ namespace VehiclesAPI.Controllers
         public async Task<ActionResult<VehicleDto[]>> GetAsync(bool? connected, int? customerId)
         {
             var vehicleModels = await _vehicleService.SearchAsync(connected, customerId);
-            
+
             var vehicleDtos = vehicleModels.Select(vh => new VehicleDto(vh, _vehicleService.IsConnected(vh)));
 
             return Ok(vehicleDtos);

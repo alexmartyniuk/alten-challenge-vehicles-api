@@ -11,10 +11,9 @@ namespace VehiclesAPI.Migrations
                 name: "Customers",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                    Id = table.Column<int>(nullable: false).Annotation("Sqlite:Autoincrement", true),
                     FullName = table.Column<string>(nullable: true),
-                    Address = table.Column<string>(nullable: true)
+                    Address = table.Column<string>(nullable: true),
                 },
                 constraints: table =>
                 {
@@ -25,12 +24,11 @@ namespace VehiclesAPI.Migrations
                 name: "Vehicles",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                    Id = table.Column<int>(nullable: false).Annotation("Sqlite:Autoincrement", true),
                     VehicleId = table.Column<string>(nullable: true),
                     RegistrationNumber = table.Column<string>(nullable: true),
                     ConnectUpdated = table.Column<DateTime>(nullable: false),
-                    CustomerId = table.Column<int>(nullable: false)
+                    CustomerId = table.Column<int>(nullable: false),
                 },
                 constraints: table =>
                 {

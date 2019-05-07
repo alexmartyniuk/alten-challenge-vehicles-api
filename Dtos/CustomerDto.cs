@@ -9,7 +9,9 @@ namespace VehiclesAPI.Dtos
     public class CustomerDto
     {
         public int Id { get; private set; }
+
         public string FullName { get; private set; }
+
         public string Address { get; private set; }
 
         public CustomerDto(CustomerModel model)

@@ -42,7 +42,7 @@ namespace VehiclesAPI.Services
 
             if (customerId.HasValue)
             {
-                query = query.Where(vh => vh.CustomerId == customerId.Value);                
+                query = query.Where(vh => vh.CustomerId == customerId.Value);
             }
 
             query = query.Include(vh => vh.Customer);
