@@ -4,6 +4,8 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <CodeAnalysisRuleSet>StaticAnalysis.ruleset</CodeAnalysisRuleSet>
     <StyleCopTreatWarningsAsErrors>true</StyleCopTreatWarningsAsErrors>
+    <ApplicationInsightsResourceId>/subscriptions/8d0bec23-42b7-4bef-be72-11270f785a03/resourcegroups/AltenChallenge-RG/providers/microsoft.insights/components/VehiclesAPIInsights</ApplicationInsightsResourceId>
+    <ApplicationInsightsAnnotationResourceId>/subscriptions/8d0bec23-42b7-4bef-be72-11270f785a03/resourcegroups/AltenChallenge-RG/providers/microsoft.insights/components/VehiclesAPIInsights</ApplicationInsightsAnnotationResourceId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.2" />
@@ -37,6 +40,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
   </ItemGroup>
 
 </Project>
