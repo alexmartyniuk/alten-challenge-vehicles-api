@@ -13,6 +13,6 @@ namespace VehiclesAPI.Models
 
         public string Address { get; set; }
 
-        public ICollection<VehicleModel> Vehicles { get; }
+        public ICollection<VehicleModel> Vehicles { get; set; }
     }
 }
